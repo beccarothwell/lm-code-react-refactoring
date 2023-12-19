@@ -4,6 +4,7 @@ import { useHero } from "./hooks/useHero";
 import { v4 as uuid } from "uuid";
 import "./App.css";
 import Header from "./components/Header/header";
+import TestimonialList from "./components/TestimonalList/testimonial_list";
 
 function App() {
   const [trips, setTrips] = useState(0);
@@ -64,18 +65,10 @@ function App() {
             don't just take our word for it; check out these smashing reviews
             from customers just like you!
           </p>
-          <ul className="testimonials">
-            {heroics.testimonials.map(({ name, rating, spiel, social }) => {
-              return (
-                <li key={name} className="test-card">
-                  <h4>{name}</h4>
-                  <a>{social}</a>
-                  <p>{spiel}</p>
-                  <p>Score / 5: {renderReviewScore(rating)}</p>
-                </li>
-              );
-            })}
-          </ul>
+          <TestimonialList
+            testimonialList={heroics.testimonials}
+            renderReviewScore={renderReviewScore}
+          />
         </div>
       )}
 
